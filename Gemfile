@@ -14,6 +14,7 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'redcarpet'
 gem 'simple_form'
 gem 'pundit'
 gem 'figaro'
