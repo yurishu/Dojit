@@ -14,6 +14,10 @@ group :development do
   gem 'sqlite3'
 end
 
+gem 'fog-aws'
+gem 'fog'
+gem 'carrierwave'
+gem 'mini_magick'
 gem 'redcarpet'
 gem 'simple_form'
 gem 'pundit'
