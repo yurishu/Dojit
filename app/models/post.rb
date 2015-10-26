@@ -7,12 +7,10 @@ class Post < ActiveRecord::Base
 
   default_scope { order('rank DESC') }
 
-  after_create :create_vote
-
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
-  #validates :topic, presence: true
-  #validates :user, presence: true
+  validates :topic, presence: true
+  validates :user, presence: true
 
   def up_votes
     votes.where(value: 1).count
@@ -33,10 +31,16 @@ class Post < ActiveRecord::Base
     update_attribute(:rank, new_rank)
   end
 
-  private
-
   def create_vote
     user.votes.create(value: 1, post: self)
+  end
+
+  def save_with_initial_vote
+    ActiveRecord::Base.transaction do
+      self.save
+      self.create_vote
+    end
+
   end
 
 end
