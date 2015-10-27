@@ -5,9 +5,12 @@ respond_to :html, :js
     @user = current_user
     @post = Post.find(params[:post_id])
     @topic = @post.topic
+    @comments = @post.comments
+
     @comment = current_user.comments.build(comment_params)
     @comment.user = @user
     @comment.post = @post
+    @new_comment = Comment.new
     authorize @comment
 
     if @comment.save
@@ -15,7 +18,10 @@ respond_to :html, :js
     else
       flash[:error] = "There was an error saving the comment. Please try again."
     end
-    redirect_to [@topic, @post]
+
+    respond_with(@comment) do |format|
+      format.html { redirect_to [@post.topic, @post] }
+    end
   end
 
   def destroy

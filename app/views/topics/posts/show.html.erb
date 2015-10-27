@@ -34,6 +34,9 @@
     <div class='js-comments'>
       <%= render partial: 'comments/comment', collection: @comments %>
     </div>
+    <div class='new-comment'>
+      <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @post.comments.new} %>
+    </div>
     <%= will_paginate @comments %>
   </div>
 </div>
