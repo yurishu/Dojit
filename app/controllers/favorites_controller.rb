@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     favorite = current_user.favorites.build(post: @post)
-    @authorize favorite
+    authorize favorite
 
     if favorite.save
       flash[:notice] = "favorite was saved."
@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     favorite = current_user.favorites.find(params[:id])
-    @authorize favorite
+    authorize favorite
 
     if favorite.destroy
       flash[:notice] = "favorite was deleted."

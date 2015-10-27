@@ -2,12 +2,10 @@ require 'rails_helper'
 
 describe User do
 
-  include TestFactories
-
   before do
-    @user = authenticated_user
-    @post_fav = associated_post
-    @post_not_fav = associated_post
+    @user = create(:user)
+    @post_fav = create(:post)
+    @post_not_fav = create(:post)
     @favorite = @user.favorites.build(post: @post_fav)
     @favorite.save
   end
