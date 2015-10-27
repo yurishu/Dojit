@@ -1,0 +1,6 @@
+<% if @comment.destroyed? %>
+  $('#comment-' +<%= @comment.id %>).fadeOut(500);
+  $('.js-comments-count').html("<%= @comment.user.comments.count %> comments");
+<% else %>
+  $('#comment-' +<%= @comment.id %>).prepend("<div class='alert alert-danger'><%= flash[:error] %></div>");
+<% end %>
