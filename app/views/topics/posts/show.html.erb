@@ -34,16 +34,11 @@
     <div class='js-comments'>
       <%= render partial: 'comments/comment', collection: @comments %>
     </div>
-    <div class='new-comment'>
-      <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @post.comments.new} %>
-    </div>
     <%= will_paginate @comments %>
+    <% if policy(@comments).create? %>
+      <div class='new-comment'>
+        <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @post.comments.new} %>
+      </div>
+    <% end %>
   </div>
 </div>
-
-<% if policy(@comments).create? %>
-  <br/>
-  <div class="col-md-8">
-    <%= render partial: 'comments/form', locals: {topic: @topic, post: @post, comment: @comments.new } %>
-  </div>
-<% end %>
