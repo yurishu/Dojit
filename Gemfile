@@ -14,6 +14,7 @@ group :development do
   gem 'sqlite3'
 end
 
+
 gem 'will_paginate', '~> 3.0.5'
 gem 'fog'
 gem 'carrierwave'
@@ -54,6 +55,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :test do
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'capybara'
 end
 
 group :development, :test do
