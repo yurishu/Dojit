@@ -14,7 +14,11 @@ group :development do
   gem 'sqlite3'
 end
 
-
+gem 'rack-mini-profiler', require: false
+gem "haml"
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
 gem 'will_paginate', '~> 3.0.5'
 gem 'fog'
 gem 'carrierwave'
